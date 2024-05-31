@@ -1,0 +1,27 @@
+.navbar {
+    top: 0;
+    left: 0;
+    background-color: var(--main-light-color);
+    height: 70px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 2px 1px 1px black;
+    color: var(--main-dark-color);
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbarLinkButton {
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    margin-top: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+.navbarLinkButton:hover {
+    background-color: #ccc;
+    box-shadow: 2px 1px 1px black;
+}

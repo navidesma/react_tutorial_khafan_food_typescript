@@ -1,0 +1,21 @@
+
+.button {
+    border-radius: 30px;
+    padding: 1rem 2rem;
+    transition: border-radius 0.3s, background-color 0.3s, color 0.3s;
+    font-weight: bold;
+    font-family: Vazirmatn;
+    font-size: 1rem;
+    background-color: var(--main-dark-color);
+    color: white;
+}
+
+.button:hover {
+    border-radius: 20px;
+    background-color: var(--main-light-color);
+    color: black;
+}
+
+.button:active {
+    background-color: #f18585;
+}
