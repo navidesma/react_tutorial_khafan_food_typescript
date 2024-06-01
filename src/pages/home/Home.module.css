@@ -1,0 +1,14 @@
+.foodCardList {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.foodCardItem {
+    margin: 1rem auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .foodCardList {
+        grid-template-columns: auto;
+    }
+}

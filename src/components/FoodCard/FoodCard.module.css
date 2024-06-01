@@ -1,5 +1,5 @@
 .foodCardContainer {
-    border: 1px solid var(--main-normal-color);
+    border: 1px solid var(--main-primary-color);
     box-shadow: 3px 5px 5px #ccc;
     border-radius: 30px;
     width: 300px;

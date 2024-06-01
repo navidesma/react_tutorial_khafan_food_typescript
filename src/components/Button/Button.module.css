@@ -1,8 +1,10 @@
-
 .button {
     border-radius: 30px;
     padding: 1rem 2rem;
-    transition: border-radius 0.3s, background-color 0.3s, color 0.3s;
+    transition:
+        border-radius 0.3s,
+        background-color 0.3s,
+        color 0.3s;
     font-weight: bold;
     font-family: Vazirmatn;
     font-size: 1rem;
@@ -17,5 +19,16 @@
 }
 
 .button:active {
-    background-color: #f18585;
+    box-shadow: 1px 1px 20px var(--main-dark-color);
+}
+
+.contained {
+    background-color: var(--main-dark-color);
+    color: white;
+}
+
+.outlined {
+    border-color: var(--main-dark-color);
+    background-color: inherit;
+    color: black;
 }
