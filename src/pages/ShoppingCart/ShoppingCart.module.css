@@ -1,0 +1,15 @@
+.totalCost {
+    margin: 0 auto;
+    border: 1px solid var(--main-dark-color);
+    border-radius: 30px;
+    padding: 1rem;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+    .totalCost {
+        width: 90%;
+    }
+}

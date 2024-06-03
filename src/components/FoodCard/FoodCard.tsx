@@ -13,7 +13,7 @@ export default function FoodCard() {
                 <h3>عنوان غذا</h3>
                 <p>رستوران</p>
                 <div className={styles.actionAndPrice}>
-                    <Button text={"سفارش"} />
+                    <Button>سفارش</Button>
                     <p style={{ fontWeight: "bold" }}>200,000 تومان</p>
                 </div>
             </div>

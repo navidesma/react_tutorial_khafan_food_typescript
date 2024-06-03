@@ -10,7 +10,9 @@ export default function Navbar() {
                 <img src={logo} alt='' width='70px' height={"70px"} />
                 <div style={{ display: "flex", marginLeft: "1rem" }}>
                     <a href='#' style={{ margin: "0.5rem" }}>
-                        <Button text={"سبد خرید"} size={"small"} variant={"outlined"} />
+                        <Button size={"small"} variant={"outlined"}>
+                            سبد خرید
+                        </Button>
                     </a>
                 </div>
             </div>

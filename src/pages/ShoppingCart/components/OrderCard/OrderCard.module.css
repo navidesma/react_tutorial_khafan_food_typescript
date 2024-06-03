@@ -1,0 +1,38 @@
+.orderCard {
+    border-radius: 30px;
+    border: 1px solid var(--main-primary-color);
+    box-shadow: 3px 5px 5px #ccc;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: 0 auto 1rem;
+    background-color: var(--main-primary-color);
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .orderCard {
+        width: 90%;
+    }
+}
+
+.orderItemName {
+    font-weight: bold;
+    display: inline;
+}
+
+.orderItemPrice {
+    font-weight: bold;
+    display: inline;
+}
+
+.action {
+    display: inline;
+}
+
+.actionNumberOfItems {
+    font-weight: bold;
+    display: inline;
+    margin: 0 1.2rem;
+}
