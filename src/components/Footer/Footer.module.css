@@ -7,6 +7,9 @@
     border-top-right-radius: 30px;
     background-color: var(--main-primary-color);
     margin-top: 1rem;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .footerContainer {
@@ -19,4 +22,11 @@
     margin-left: 2rem;
     width: 150px;
     height: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+    .image {
+        width: 100px;
+        height: 100px;
+    }
 }

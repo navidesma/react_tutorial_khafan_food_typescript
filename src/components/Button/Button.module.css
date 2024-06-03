@@ -1,6 +1,10 @@
 .button {
     border-radius: 30px;
-    padding: 1rem 2rem;
+    border: none;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1rem 0.5rem;
     transition: box-shadow 0.3s;
     font-weight: bold;
     font-family: Vazirmatn;

@@ -1,31 +1,24 @@
 import React from "react";
 import styles from "./Button.module.css";
 
+type ButtonOriginalProps = React.ComponentProps<"button">;
+
+interface Props extends ButtonOriginalProps {
+    children: React.ReactNode;
+    color?: string;
+    size?: "small" | "normal" | "big";
+    variant?: "contained" | "outlined";
+    fullWidthOnMobile?: boolean;
+}
+
 export default function Button({
     color,
     children,
     size,
     variant,
-    fullWidth,
     fullWidthOnMobile,
-    m,
-    mt,
-    mr,
-    ml,
-    mb,
-}: {
-    children: React.ReactNode;
-    color?: string;
-    size?: "small" | "normal" | "big";
-    variant?: "contained" | "outlined";
-    fullWidth?: boolean;
-    fullWidthOnMobile?: boolean;
-    m?: number;
-    mt?: number;
-    mb?: number;
-    ml?: number;
-    mr?: number;
-}) {
+    style,
+}: Props) {
     return (
         <button
             className={
@@ -42,12 +35,7 @@ export default function Button({
                         : size === "small"
                           ? "0.5rem 1rem"
                           : "1.5rem 3rem",
-                width: fullWidth ? "100%" : undefined,
-                margin: m ? `${m}rem` : undefined,
-                marginTop: mt ? `${mt}rem` : undefined,
-                marginBottom: mb ? `${mb}rem` : undefined,
-                marginRight: mr ? `${mr}rem` : undefined,
-                marginLeft: ml ? `${ml}rem` : undefined,
+                ...style,
             }}
         >
             {children}

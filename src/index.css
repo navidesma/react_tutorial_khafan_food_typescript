@@ -3,7 +3,6 @@
     --main-secondary-color: #b494b3;
     --main-primary-color: #b0c252;
     --main-dark-color: #335e7d;
-    --padding: 10px;
 }
 
 body {
@@ -14,6 +13,7 @@ body {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 a:hover {

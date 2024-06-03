@@ -1,0 +1,27 @@
+.inputContainer {
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.label {
+    display: block;
+    font-size: large;
+    margin-bottom: -0.5rem;
+}
+
+.input {
+    width: 100%;
+    font-family: Vazirmatn;
+    font-size: large;
+    padding: 1rem 0.7rem 1rem 0;
+    border-radius: 20px;
+    border: 1px solid var(--main-light-color);
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow ease-in-out 0.15s;
+}
+
+.input:focus {
+    box-shadow: 2px 2px 20px var(--main-primary-color);
+}
