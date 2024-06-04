@@ -1,16 +1,15 @@
+import React from "react";
 import styles from "./OrderCard.module.css";
-import Button from "@/components/Button/Button.tsx";
+import AddAndRemoveItemButton from "@/components/AddAndRemoveItemButton/AddAndRemoveItemButton.tsx";
 
 export default function OrderCard() {
+    const [itemCount, setItemCount] = React.useState(0);
+
     return (
         <div className={styles.orderCard}>
             <p className={styles.orderItemName}>ساندویچ ویژه</p>
             <p className={styles.orderItemPrice}>200,000 تومان</p>
-            <div className={styles.action}>
-                <Button size={"small"}>+</Button>
-                <p className={styles.actionNumberOfItems}>2</p>
-                <Button size={"small"}>-</Button>
-            </div>
+            <AddAndRemoveItemButton {...{ itemCount, setItemCount }} />
         </div>
     );
 }

@@ -1,0 +1,9 @@
+.action {
+    display: inline;
+}
+
+.actionNumberOfItems {
+    font-weight: bold;
+    display: inline;
+    margin: 0 1.2rem;
+}

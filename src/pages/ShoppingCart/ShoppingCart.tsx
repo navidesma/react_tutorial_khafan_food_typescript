@@ -28,7 +28,11 @@ export default function ShoppingCart() {
                     <h3>6 عدد</h3>
                 </div>
             </div>
-            <Button color={"green"} fullWidthOnMobile mt={1}>
+            <Button
+                color={"green"}
+                fullWidthOnMobile
+                style={{ display: "block", padding: "1rem 3rem", marginTop: "1rem" }}
+            >
                 پرداخت
             </Button>
         </Main>

@@ -18,6 +18,7 @@ export default function Button({
     variant,
     fullWidthOnMobile,
     style,
+    onClick,
 }: Props) {
     return (
         <button
@@ -37,6 +38,7 @@ export default function Button({
                           : "1.5rem 3rem",
                 ...style,
             }}
+            onClick={onClick}
         >
             {children}
         </button>
