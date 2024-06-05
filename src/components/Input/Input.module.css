@@ -25,3 +25,14 @@
 .input:focus {
     box-shadow: 2px 2px 20px var(--main-primary-color);
 }
+
+.error {
+    box-shadow: 4px 4px 20px red;
+}
+
+.errorMessage {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #9e0404;
+}

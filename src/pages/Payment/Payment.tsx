@@ -2,9 +2,12 @@ import React from "react";
 import styles from "./Payment.module.css";
 import Input from "@/components/Input/Input.tsx";
 import Button from "@/components/Button/Button.tsx";
+import useInputValidator from "@/util/useInputValidator.ts";
 
 export default function Payment() {
     const [counter, setCounter] = React.useState(0);
+
+    const cardNumberInputState = useInputValidator({ minLength: 16, maxLength: 16 });
 
     const counterClickHandler = () => {
         setCounter(120);
@@ -32,6 +35,7 @@ export default function Payment() {
                 dir={"ltr"}
                 type={"number"}
                 className={styles.numberInput}
+                {...cardNumberInputState.props}
             />
             <Input
                 label={"CVV2"}
