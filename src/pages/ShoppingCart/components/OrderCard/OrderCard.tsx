@@ -1,15 +1,20 @@
-import React from "react";
+// import React from "react";
 import styles from "./OrderCard.module.css";
+// import AddAndRemoveItemButton from "@/components/AddAndRemoveItemButton/AddAndRemoveItemButton.tsx";
+import formatMoney from "@/util/formatMoney.ts";
+import { CartType } from "@/interfaces.ts";
+import { useContext } from "react";
+import { AppContext, AppContextType } from "@/appContext.tsx";
 import AddAndRemoveItemButton from "@/components/AddAndRemoveItemButton/AddAndRemoveItemButton.tsx";
 
-export default function OrderCard() {
-    const [itemCount, setItemCount] = React.useState(0);
+export default function OrderCard({ item, count }: CartType) {
+    const { addItemToCart, removeItemFromCart } = useContext(AppContext) as AppContextType;
 
     return (
         <div className={styles.orderCard}>
-            <p className={styles.orderItemName}>ساندویچ ویژه</p>
-            <p className={styles.orderItemPrice}>200,000 تومان</p>
-            <AddAndRemoveItemButton {...{ itemCount, setItemCount }} />
+            <p className={styles.orderItemName}>{item.name}</p>
+            <p className={styles.orderItemPrice}>{formatMoney(item.price * count)}</p>
+            <AddAndRemoveItemButton {...{ count, item, removeItemFromCart, addItemToCart }} />
         </div>
     );
 }
