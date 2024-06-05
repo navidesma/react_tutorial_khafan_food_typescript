@@ -1,0 +1,43 @@
+.container {
+    margin: 1rem auto;
+    width: 30%;
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: 1px 1px 20px #ccc;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 80%;
+    }
+}
+
+.dateContainer {
+    display: grid;
+    grid-template-columns: 30% 30%;
+    column-gap: 70px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 80%;
+    }
+
+    .dateContainer {
+        grid-template-columns: 35% 35%;
+    }
+}
+
+.numberInput {
+    padding-right: 0;
+    padding-left: 1.5rem;
+
+    -moz-appearance: textfield;
+}
+
+/* Hide the arrows/spinner in WebKit browsers (Chrome, Safari, Edge) */
+.numberInput::-webkit-outer-spin-button,
+.numberInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

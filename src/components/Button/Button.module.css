@@ -24,6 +24,12 @@
     box-shadow: 1px 1px 20px var(--main-dark-color);
 }
 
+.button:disabled {
+    box-shadow: none;
+    background-color: #ccc;
+    color: black;
+}
+
 .contained {
     background-color: var(--main-dark-color);
     color: white;

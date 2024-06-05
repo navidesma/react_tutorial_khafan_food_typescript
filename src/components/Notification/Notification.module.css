@@ -1,0 +1,14 @@
+.notification {
+    border: 1px solid var(--main-primary-color);
+    border-radius: 30px;
+    overflow: unset;
+    color: white;
+    width: 300px;
+    height: 150px;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    padding: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}

@@ -11,34 +11,34 @@ interface Props extends ButtonOriginalProps {
     fullWidthOnMobile?: boolean;
 }
 
-export default function Button({
-    color,
-    children,
-    size,
-    variant,
-    fullWidthOnMobile,
-    style,
-    onClick,
-}: Props) {
+export default function Button(props: Props) {
+    const { color, children, size, variant, fullWidthOnMobile } = props;
     return (
         <button
             className={
                 styles.button +
                 " " +
                 (variant && variant === "outlined" ? styles.outlined : "") +
-                (fullWidthOnMobile ? styles.fullWidthOnMobile : "")
+                " " +
+                (fullWidthOnMobile ? styles.fullWidthOnMobile : "") +
+                " " +
+                (props.className || "")
             }
             style={{
+                ...props.style,
                 backgroundColor: color || undefined,
                 padding:
-                    !size || size === "normal"
-                        ? undefined
-                        : size === "small"
-                          ? "0.5rem 1rem"
-                          : "1.5rem 3rem",
-                ...style,
+                    props.style && props.style.padding
+                        ? props.style.padding
+                        : !size || size === "normal"
+                          ? undefined
+                          : size === "small"
+                            ? "0.5rem 1rem"
+                            : "1.5rem 3rem",
             }}
-            onClick={onClick}
+            onClick={props.onClick}
+            type={props.type}
+            disabled={props.disabled}
         >
             {children}
         </button>
