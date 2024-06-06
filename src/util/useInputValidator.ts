@@ -50,7 +50,7 @@ export default function useInputValidator({
     };
 
     return {
-        isValid: !!errorMessage,
+        isValid: !errorMessage,
         props: { onChange, value, errorMessage, onBlur, error: !!errorMessage },
     };
 }
@@ -67,7 +67,7 @@ const validate = ({
     setErrorMessage: React.Dispatch<React.SetStateAction<string>>;
 }) => {
     if (minLength && value.length < minLength) {
-        setErrorMessage(`تعداد کاراکتر ها باید از ${minLength} تا بیشتر باشد`);
+        setErrorMessage(`تعداد کاراکتر ها باید حداقل ${minLength} تا باشد`);
         return;
     }
     if (required && value.length === 0) {

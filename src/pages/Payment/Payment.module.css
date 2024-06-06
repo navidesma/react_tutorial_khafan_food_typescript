@@ -18,6 +18,13 @@
     column-gap: 70px;
 }
 
+.passwordContainer {
+    display: grid;
+    grid-template-columns: 30% 30%;
+    column-gap: 70px;
+    margin-bottom: 2rem;
+}
+
 @media only screen and (max-width: 600px) {
     .container {
         width: 80%;

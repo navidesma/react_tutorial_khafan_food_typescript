@@ -5,6 +5,7 @@ export interface AppContextType {
     cart: CartType[];
     addItemToCart: (item: FoodItemType) => void;
     removeItemFromCart: (id: number) => void;
+    clearCart: () => void;
     notification: NotificationType | null;
     toggleNotification: (notification: NotificationType) => void;
     isSignedIn: boolean;
@@ -59,6 +60,11 @@ export default function AppContextProvider({ children }: { children: React.React
             return newState;
         });
     };
+
+    const clearCart = () => {
+        setCart([]);
+    };
+
     const toggleNotification = (notification: NotificationType) => {
         setNotification(notification);
     };
@@ -74,6 +80,7 @@ export default function AppContextProvider({ children }: { children: React.React
                 addItemToCart,
                 removeItemFromCart,
                 toggleNotification,
+                clearCart,
             }}
         >
             {children}

@@ -5,16 +5,19 @@ import Button from "@/components/Button/Button.tsx";
 import formatMoney from "@/util/formatMoney.ts";
 import { useContext } from "react";
 import { AppContext, AppContextType } from "@/appContext.tsx";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCart() {
     const { cart } = useContext(AppContext) as AppContextType;
 
-    let totalCost = 0;
+    let totalCostFromCart = 0;
     let totalItemCount = 0;
     cart.forEach((cart) => {
-        totalCost += cart.item.price * cart.count;
+        totalCostFromCart += cart.item.price * cart.count;
         totalItemCount += cart.count;
     });
+
+    const totalCost = totalCostFromCart + 15000;
 
     return (
         <Main>
@@ -28,26 +31,28 @@ export default function ShoppingCart() {
                     <div className={styles.totalCost}>
                         <div>
                             <h3>جمع سفارش:</h3>
-                            <h3>{formatMoney(totalCost)}</h3>
+                            <h3>{formatMoney(totalCostFromCart)}</h3>
                             <h3>هزینه پیک:</h3>
                             <h3>{formatMoney(15000)}</h3>
                         </div>
                         <div>
                             <h3>قابل پرداخت:</h3>
-                            <h3>{formatMoney(totalCost + 15000)}</h3>
+                            <h3>{formatMoney(totalCost)}</h3>
                         </div>
                         <div>
                             <h3>تعداد اقلام:</h3>
                             <h3>{`${totalItemCount} عدد`}</h3>
                         </div>
                     </div>
-                    <Button
-                        color={"green"}
-                        fullWidthOnMobile
-                        style={{ display: "block", padding: "1rem 3rem", marginTop: "1rem" }}
-                    >
-                        پرداخت
-                    </Button>
+                    <Link to={`/payment?amount=${totalCost}`}>
+                        <Button
+                            color={"green"}
+                            fullWidthOnMobile
+                            style={{ display: "block", padding: "1rem 3rem", marginTop: "1rem" }}
+                        >
+                            پرداخت
+                        </Button>
+                    </Link>
                 </>
             ) : (
                 <h1 style={{ textAlign: "center" }}>هیج سفارشی ثبت نشده</h1>
