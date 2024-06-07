@@ -26,7 +26,11 @@ export default function Button(props: Props) {
             }
             style={{
                 ...props.style,
-                backgroundColor: color || undefined,
+                backgroundColor:
+                    color ||
+                    (props.style && props.style.backgroundColor
+                        ? props.style.backgroundColor
+                        : undefined),
                 padding:
                     props.style && props.style.padding
                         ? props.style.padding

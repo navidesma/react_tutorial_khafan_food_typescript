@@ -21,7 +21,7 @@ export default function AddAndRemoveItemButton({
             </Button>
             <p className={styles.actionNumberOfItems}>{count}</p>
             <Button style={{ padding: "0.5rem 1rem" }} onClick={() => removeItemFromCart(item.id)}>
-                {count > 1 ? "-" : <img src={trashCan} alt='' width={"15px"} height={"15apx"} />}
+                {count > 1 ? "-" : <img src={trashCan} alt='' width={"15px"} height={"15px"} />}
             </Button>
         </div>
     );
