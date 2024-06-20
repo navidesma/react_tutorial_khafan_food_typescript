@@ -1,0 +1,13 @@
+.select {
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    background-color: var(--main-light-color);
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: Vazirmatn;
+}
+
+.option {
+    font-weight: bold;
+    font-size: 1rem;
+}

@@ -1,5 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
-import { CartType, FoodItemType, NotificationType } from "@/interfaces.ts";
+import { CartType, FoodItemType, NotificationType, UserTypeEnum } from "@/interfaces.ts";
+
+interface UserInfoType {
+    fullName: string;
+    type: UserTypeEnum;
+}
 
 export interface AppContextType {
     cart: CartType[];
@@ -9,20 +14,28 @@ export interface AppContextType {
     notification: NotificationType | null;
     toggleNotification: (notification: NotificationType) => void;
     isSignedIn: boolean;
-    fullName: string | null;
-    userType: "MANAGER" | "NORMAL_USER";
+    userInfo: UserInfoType | null;
+    token: string | null;
+    signIn: (token: string, userInfo: UserInfoType) => void;
+    clearAuth: () => void;
 }
 
 export const AppContext = createContext<AppContextType | null>(null);
 
 export default function AppContextProvider({ children }: { children: React.ReactNode }) {
+    const [token, setToken] = useState(localStorage.getItem("token"));
+
     const [cart, setCart] = useState<CartType[]>([]);
 
     const [notification, setNotification] = useState<NotificationType | null>(null);
 
-    const fullName = "Navid Esma";
-    const userType = "NORMAL_USER";
-    const isSignedIn = true;
+    const userInfoText = localStorage.getItem("userInfo");
+
+    const [userInfo, setUserInfo] = useState<UserInfoType | null>(
+        userInfoText ? JSON.parse(userInfoText) : null,
+    );
+
+    const isSignedIn = !!token;
 
     useEffect(() => {
         if (notification) {
@@ -69,18 +82,33 @@ export default function AppContextProvider({ children }: { children: React.React
         setNotification(notification);
     };
 
+    const clearAuth = () => {
+        setToken(null);
+        localStorage.clear();
+    };
+
+    const signIn = (token: string, userInfo: UserInfoType) => {
+        setToken(token);
+        localStorage.setItem("token", token);
+
+        setUserInfo(userInfo);
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    };
+
     return (
         <AppContext.Provider
             value={{
                 cart,
-                fullName,
+                userInfo,
                 isSignedIn,
                 notification,
-                userType,
                 addItemToCart,
                 removeItemFromCart,
                 toggleNotification,
                 clearCart,
+                token,
+                clearAuth,
+                signIn,
             }}
         >
             {children}

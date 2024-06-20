@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AppContext, AppContextType } from "@/appContext.tsx";
 
 export default function Navbar() {
-    const { cart } = useContext(AppContext) as AppContextType;
+    const { cart, clearAuth } = useContext(AppContext) as AppContextType;
 
     let count = 0;
     cart.forEach((cart) => (count += cart.count));
@@ -36,6 +36,15 @@ export default function Navbar() {
                             )}
                         </Button>
                     </Link>
+                    <Button
+                        color={"inherit"}
+                        size={"small"}
+                        variant={"outlined"}
+                        style={{ margin: "0.5rem" }}
+                        onClick={() => clearAuth()}
+                    >
+                        خروج
+                    </Button>
                 </div>
             </div>
         </nav>

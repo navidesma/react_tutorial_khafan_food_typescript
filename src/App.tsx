@@ -6,19 +6,32 @@ import SignUp from "@/pages/SignUp/SignUp.tsx";
 import Payment from "@/pages/Payment/Payment.tsx";
 import { AppContext, AppContextType } from "@/appContext.tsx";
 import Notification from "@/components/Notification/Notification.tsx";
+import SignIn from "@/pages/SignIn/SignIn.tsx";
+import Restaurant from "@/pages/Restaurant/Restaurant.tsx";
 
 function App() {
-    const { notification } = React.useContext(AppContext) as AppContextType;
+    const { notification, isSignedIn } = React.useContext(AppContext) as AppContextType;
 
     return (
         <>
             <Routes>
-                <Route path='home' element={<Home />} />
-                <Route path='shopping-cart' element={<ShoppingCart />} />
-                <Route path='sign-up' element={<SignUp />} />
-                <Route path='payment' element={<Payment />} />
-                <Route path='' element={<Home />} />
-                <Route path='*' element={<Navigate to={"home"} />} />
+                {isSignedIn && (
+                    <>
+                        <Route path='home' element={<Home />} />
+                        <Route path='shopping-cart' element={<ShoppingCart />} />
+                        <Route path='payment' element={<Payment />} />
+                        <Route path='restaurant' element={<Restaurant />} />
+                        <Route path='' element={<Home />} />{" "}
+                        <Route path='*' element={<Navigate to={"home"} />} />
+                    </>
+                )}
+                {!isSignedIn && (
+                    <>
+                        <Route path='sign-up' element={<SignUp />} />
+                        <Route path='sign-in' element={<SignIn />} />
+                        <Route path='*' element={<Navigate to={"sign-in"} />} />
+                    </>
+                )}
             </Routes>
             {notification && <Notification {...notification} />}
         </>
