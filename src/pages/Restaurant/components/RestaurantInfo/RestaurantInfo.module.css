@@ -1,0 +1,13 @@
+.container {
+    margin: 1rem auto;
+    width: 30%;
+    border-radius: 30px;
+    padding: 2rem 4rem;
+    box-shadow: 1px 1px 20px #ccc;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 80%;
+    }
+}

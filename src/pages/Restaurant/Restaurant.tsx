@@ -1,10 +1,14 @@
 import Main from "@/components/Main/Main.tsx";
 import useSendRequest from "@/util/useSendRequest.ts";
-import React from "react";
+import React, { useState } from "react";
 import { RestaurantType } from "@/interfaces.ts";
+import { Link } from "react-router-dom";
+import Button from "@/components/Button/Button.tsx";
+import MapComponent, { MapPositionType } from "@/components/MapComponent/MapComponent.tsx";
 
 export default function Restaurant() {
     const [restaurant, setRestaurant] = React.useState<RestaurantType>();
+    const [position, setPosition] = useState<MapPositionType>();
 
     const sendRequest = useSendRequest();
 
@@ -26,7 +30,12 @@ export default function Restaurant() {
 
     return (
         <Main>
-            <h1>رستوران: {restaurant.name}</h1>
+            {!restaurant.is_creation_completed && (
+                <Link to={"/restaurant/edit-restaurant"}>
+                    <Button>ویرایش اطلاعات رستوران</Button>
+                </Link>
+            )}
+            <MapComponent {...{ position, setPosition }} />
         </Main>
     );
 }

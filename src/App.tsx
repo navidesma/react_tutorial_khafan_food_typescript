@@ -8,6 +8,7 @@ import { AppContext, AppContextType } from "@/appContext.tsx";
 import Notification from "@/components/Notification/Notification.tsx";
 import SignIn from "@/pages/SignIn/SignIn.tsx";
 import Restaurant from "@/pages/Restaurant/Restaurant.tsx";
+import RestaurantInfo from "@/pages/Restaurant/components/RestaurantInfo/RestaurantInfo.tsx";
 
 function App() {
     const { notification, isSignedIn } = React.useContext(AppContext) as AppContextType;
@@ -21,6 +22,7 @@ function App() {
                         <Route path='shopping-cart' element={<ShoppingCart />} />
                         <Route path='payment' element={<Payment />} />
                         <Route path='restaurant' element={<Restaurant />} />
+                        <Route path='restaurant/edit-restaurant' element={<RestaurantInfo />} />
                         <Route path='' element={<Home />} />{" "}
                         <Route path='*' element={<Navigate to={"home"} />} />
                     </>

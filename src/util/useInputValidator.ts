@@ -52,6 +52,7 @@ export default function useInputValidator({
     return {
         isValid: !errorMessage,
         value,
+        setValue,
         props: { onChange, value, errorMessage, onBlur, error: !!errorMessage },
     };
 }
