@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import { RestaurantType } from "@/interfaces.ts";
 import { Link } from "react-router-dom";
 import Button from "@/components/Button/Button.tsx";
-import MapComponent, { MapPositionType } from "@/components/MapComponent/MapComponent.tsx";
+import MapComponent, {
+    initialPosition,
+    MapPositionType,
+} from "@/components/MapComponent/MapComponent.tsx";
 
 export default function Restaurant() {
     const [restaurant, setRestaurant] = React.useState<RestaurantType>();
-    const [position, setPosition] = useState<MapPositionType>();
+    const [position, setPosition] = useState<MapPositionType | undefined>(initialPosition);
 
     const sendRequest = useSendRequest();
 

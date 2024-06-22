@@ -9,6 +9,8 @@ import Notification from "@/components/Notification/Notification.tsx";
 import SignIn from "@/pages/SignIn/SignIn.tsx";
 import Restaurant from "@/pages/Restaurant/Restaurant.tsx";
 import RestaurantInfo from "@/pages/Restaurant/components/RestaurantInfo/RestaurantInfo.tsx";
+import ManageAddresses from "@/pages/ManageAddresses/ManageAddresses.tsx";
+import ManageAddress from "@/pages/ManageAddress/ManageAddress.tsx";
 
 function App() {
     const { notification, isSignedIn } = React.useContext(AppContext) as AppContextType;
@@ -23,6 +25,9 @@ function App() {
                         <Route path='payment' element={<Payment />} />
                         <Route path='restaurant' element={<Restaurant />} />
                         <Route path='restaurant/edit-restaurant' element={<RestaurantInfo />} />
+                        <Route path='manage-addresses' element={<ManageAddresses />} />
+                        <Route path='manage-address/:addressId' element={<ManageAddress />} />
+                        <Route path='manage-address' element={<ManageAddress />} />
                         <Route path='' element={<Home />} />{" "}
                         <Route path='*' element={<Navigate to={"home"} />} />
                     </>

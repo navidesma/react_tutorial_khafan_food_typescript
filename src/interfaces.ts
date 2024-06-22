@@ -42,3 +42,15 @@ export interface RestaurantType {
     updated_at: string;
     is_creation_completed: boolean;
 }
+
+export interface AddressType {
+    id: number;
+    latitude: number;
+    longitude: number;
+    title: string;
+    description: string;
+    mobile: string;
+    created_at: string;
+    updated_at: string;
+    owner: number;
+}
