@@ -41,15 +41,15 @@ export default function Payment() {
     const formSubmitHandler: React.FormEventHandler = (event) => {
         event.preventDefault();
 
-        console.log(cardNumberInputState.isValid);
+        console.log(cardNumberInputState.getIsValid());
 
         if (
             !(
-                cardNumberInputState.isValid &&
-                cvv2InputState.isValid &&
-                month.isValid &&
-                year.isValid &&
-                password.isValid
+                cardNumberInputState.getIsValid() &&
+                cvv2InputState.getIsValid() &&
+                month.getIsValid() &&
+                year.getIsValid() &&
+                password.getIsValid()
             )
         ) {
             return;

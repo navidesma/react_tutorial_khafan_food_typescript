@@ -19,7 +19,7 @@ export default function SignIn() {
     const formSubmitHandler: React.FormEventHandler = async (event) => {
         event.preventDefault();
 
-        if (!(usernameInputState.isValid && passwordInputState.isValid)) {
+        if (!(usernameInputState.getIsValid() && passwordInputState.getIsValid())) {
             return;
         }
 

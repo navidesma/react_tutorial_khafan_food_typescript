@@ -18,16 +18,11 @@ export default function useInputValidator({
 
     const [validateOnEachKeyPress, setValidateOnEachKeyPress] = useState<boolean>(false);
 
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const newValue = event.target.value;
 
         if (validateOnEachKeyPress) {
-            validate({
-                value: newValue,
-                minLength,
-                setErrorMessage,
-                required,
-            });
+            getIsValid();
         }
 
         if (maxLength && newValue.length > maxLength) {
@@ -41,7 +36,11 @@ export default function useInputValidator({
         if (!validateOnEachKeyPress) {
             setValidateOnEachKeyPress(true);
         }
-        validate({
+        getIsValid();
+    };
+
+    const getIsValid = () => {
+        return validate({
             value,
             minLength,
             setErrorMessage,
@@ -50,7 +49,7 @@ export default function useInputValidator({
     };
 
     return {
-        isValid: !errorMessage,
+        getIsValid,
         value,
         setValue,
         props: { onChange, value, errorMessage, onBlur, error: !!errorMessage },
@@ -70,12 +69,14 @@ const validate = ({
 }) => {
     if (minLength && value.length < minLength) {
         setErrorMessage(`تعداد کاراکتر ها باید حداقل ${minLength} تا باشد`);
-        return;
+        return false;
     }
     if (required && value.length === 0) {
         setErrorMessage("این فیلد نباید خالی باشد");
-        return;
+        return false;
     }
 
     setErrorMessage("");
+
+    return true;
 };

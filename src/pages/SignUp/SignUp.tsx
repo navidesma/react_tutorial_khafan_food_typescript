@@ -38,11 +38,11 @@ export default function SignUp() {
 
         if (
             !(
-                usernameInputState.isValid &&
-                nameInputState.isValid &&
-                lastNameInputState.isValid &&
-                mobileInputState.isValid &&
-                passwordInputState.isValid
+                usernameInputState.getIsValid() &&
+                nameInputState.getIsValid() &&
+                lastNameInputState.getIsValid() &&
+                mobileInputState.getIsValid() &&
+                passwordInputState.getIsValid()
             )
         ) {
             return;
