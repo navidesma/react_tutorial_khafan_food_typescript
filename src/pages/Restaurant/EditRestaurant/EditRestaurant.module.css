@@ -11,3 +11,9 @@
         width: 80%;
     }
 }
+
+.noAddressContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

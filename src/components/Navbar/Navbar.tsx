@@ -18,7 +18,7 @@ export default function Navbar() {
                     <h1 style={{ marginTop: "0.8rem", marginRight: "1.5rem" }}>خفن فود</h1>
                 </Link>
                 <img src={logo} alt='' width='70px' height={"70px"} />
-                <div style={{ display: "flex", marginLeft: "1rem" }}>
+                <div style={{ marginLeft: "1rem", marginTop: "0.7rem" }}>
                     <Link to='/shopping-cart' style={{ margin: "0.5rem" }}>
                         <Button size={"small"} variant={"outlined"}>
                             {"سبد خرید"}{" "}
@@ -40,7 +40,6 @@ export default function Navbar() {
                         color={"inherit"}
                         size={"small"}
                         variant={"outlined"}
-                        style={{ margin: "0.5rem" }}
                         onClick={() => clearAuth()}
                     >
                         خروج

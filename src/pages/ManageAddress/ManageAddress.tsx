@@ -95,13 +95,13 @@ export default function ManageAddress() {
         };
 
         const send = async () => {
-            const res = await sendRequest(`food/address/${address ? address.id : ""}/`, {
+            const res = await sendRequest(`food/address/${address ? address.id + "/" : ""}`, {
                 body,
                 options: { method: address ? "PATCH" : "POST" },
             });
 
             if (res.isOK) {
-                navigate("/manage-addresses");
+                navigate("/addresses");
             }
         };
         send();

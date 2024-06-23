@@ -41,7 +41,7 @@ export default function useSendRequest() {
             }
         }
 
-        if (options.method !== "get" && options.method !== "GET" && response.ok) {
+        if (options.method !== "get" && options.method !== "GET" && response.status < 400) {
             toggleNotification({ type: "success", message: "موفقیت آمیز." });
         }
 

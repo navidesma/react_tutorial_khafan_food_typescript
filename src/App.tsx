@@ -8,8 +8,8 @@ import { AppContext, AppContextType } from "@/appContext.tsx";
 import Notification from "@/components/Notification/Notification.tsx";
 import SignIn from "@/pages/SignIn/SignIn.tsx";
 import Restaurant from "@/pages/Restaurant/Restaurant.tsx";
-import RestaurantInfo from "@/pages/Restaurant/components/RestaurantInfo/RestaurantInfo.tsx";
-import ManageAddresses from "@/pages/ManageAddresses/ManageAddresses.tsx";
+import EditRestaurant from "@/pages/Restaurant/EditRestaurant/EditRestaurant.tsx";
+import Addresses from "@/pages/Addresses/Addresses.tsx";
 import ManageAddress from "@/pages/ManageAddress/ManageAddress.tsx";
 
 function App() {
@@ -24,8 +24,8 @@ function App() {
                         <Route path='shopping-cart' element={<ShoppingCart />} />
                         <Route path='payment' element={<Payment />} />
                         <Route path='restaurant' element={<Restaurant />} />
-                        <Route path='restaurant/edit-restaurant' element={<RestaurantInfo />} />
-                        <Route path='manage-addresses' element={<ManageAddresses />} />
+                        <Route path='restaurant/edit-restaurant' element={<EditRestaurant />} />
+                        <Route path='addresses' element={<Addresses />} />
                         <Route path='manage-address/:addressId' element={<ManageAddress />} />
                         <Route path='manage-address' element={<ManageAddress />} />
                         <Route path='' element={<Home />} />{" "}

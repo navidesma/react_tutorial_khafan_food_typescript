@@ -27,7 +27,7 @@ export default function AddressComponent({ address }: { address: AddressType }) 
             <p>توضیحات: {address.description}</p>
             <p>شماره تماس: {address.mobile}</p>
             <Link to={`/manage-address/${address.id}`}>
-                <Button>ویرایش آدرس</Button>
+                <Button fullWidthOnMobile>ویرایش آدرس</Button>
             </Link>
         </div>
     );

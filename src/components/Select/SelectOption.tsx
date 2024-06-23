@@ -5,7 +5,7 @@ export default function SelectOption({
     value,
     children,
 }: {
-    value: string;
+    value: string | number;
     children: React.ReactNode;
 }) {
     return (
