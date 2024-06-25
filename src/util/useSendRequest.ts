@@ -7,6 +7,7 @@ interface ExtraArgumentType {
     body?: unknown;
     options?: RequestInit;
     forceToken?: string;
+    isJSON?: boolean;
 }
 
 export default function useSendRequest() {
@@ -14,13 +15,15 @@ export default function useSendRequest() {
 
     return async <T>(
         url: string,
-        { body, options = { method: "get" }, forceToken }: ExtraArgumentType = {},
+        { body, options = { method: "get" }, forceToken, isJSON = true }: ExtraArgumentType = {},
     ) => {
         const headers: HeadersInit = {
-            "Content-Type": "application/json",
             Authorization: forceToken ? `Bearer ${forceToken}` : token ? `Bearer ${token}` : "",
             ...options.headers,
         };
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (isJSON) headers["Content-Type"] = "application/json";
 
         const response = await fetch(`${apiUrl}${url}`, {
             body: body ? JSON.stringify(body) : undefined,

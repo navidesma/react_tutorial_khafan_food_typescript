@@ -1,11 +1,52 @@
 import styles from "./Home.module.css";
 import Main from "@/components/Main/Main";
 import FoodCard from "@/components/FoodCard/FoodCard.tsx";
-import { foods } from "@/foods.ts";
+import useSendRequest from "@/util/useSendRequest.ts";
+import React, { useContext } from "react";
+import { FoodType, PaginatedListType, UserTypeEnum } from "@/interfaces.ts";
+import { AppContext, AppContextType } from "@/appContext.tsx";
+import { Link } from "react-router-dom";
+import Button from "@/components/Button/Button.tsx";
 
 export default function Home() {
+    const { userInfo } = useContext(AppContext) as AppContextType;
+    const isRestaurantOwner = userInfo?.type === UserTypeEnum.RESTAURANT_OWNER;
+    const sendRequest = useSendRequest();
+    const [foods, setFood] = React.useState<FoodType[]>();
+
+    React.useEffect(() => {
+        const send = async () => {
+            const res = await sendRequest<PaginatedListType<FoodType>>("food/list/");
+            if (res.isOK) {
+                setFood(res.data.results);
+            }
+        };
+        send();
+    }, []);
+
+    if (!foods) {
+        return <></>;
+    }
+    if (foods.length === 0) {
+        return (
+            <Main>
+                {isRestaurantOwner && (
+                    <Link to={"/restaurant/food"}>
+                        <Button>تعریف غذای جدید</Button>
+                    </Link>
+                )}
+                <h1>هیچ غذایی تعریف نشده</h1>
+            </Main>
+        );
+    }
+
     return (
         <Main>
+            {isRestaurantOwner && (
+                <Link to={"/restaurant/food"}>
+                    <Button>تعریف غذای جدید</Button>
+                </Link>
+            )}
             <div className={styles.foodCardList}>
                 {foods.map((food) => (
                     <div className={styles.foodCardItem}>

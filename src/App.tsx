@@ -11,6 +11,7 @@ import Restaurant from "@/pages/Restaurant/Restaurant.tsx";
 import EditRestaurant from "@/pages/Restaurant/EditRestaurant/EditRestaurant.tsx";
 import Addresses from "@/pages/Addresses/Addresses.tsx";
 import ManageAddress from "@/pages/ManageAddress/ManageAddress.tsx";
+import CreateEditFood from "@/pages/Restaurant/CreateEditFood/CreateEditFood.tsx";
 
 function App() {
     const { notification, isSignedIn } = React.useContext(AppContext) as AppContextType;
@@ -24,6 +25,8 @@ function App() {
                         <Route path='shopping-cart' element={<ShoppingCart />} />
                         <Route path='payment' element={<Payment />} />
                         <Route path='restaurant' element={<Restaurant />} />
+                        <Route path='restaurant/food' element={<CreateEditFood />} />
+                        <Route path='restaurant/food/:foodId' element={<CreateEditFood />} />
                         <Route path='restaurant/edit-restaurant' element={<EditRestaurant />} />
                         <Route path='addresses' element={<Addresses />} />
                         <Route path='manage-address/:addressId' element={<ManageAddress />} />

@@ -1,7 +1,7 @@
 import styles from "./AddAndRemoveItemButton.module.css";
 import Button from "@/components/Button/Button.tsx";
 import trashCan from "@/resources/images/trashcan.svg";
-import { FoodItemType } from "@/interfaces.ts";
+import { FoodType } from "@/interfaces.ts";
 
 export default function AddAndRemoveItemButton({
     count,
@@ -10,8 +10,8 @@ export default function AddAndRemoveItemButton({
     removeItemFromCart,
 }: {
     count: number;
-    item: FoodItemType;
-    addItemToCart: (item: FoodItemType) => void;
+    item: FoodType;
+    addItemToCart: (item: FoodType) => void;
     removeItemFromCart: (id: number) => void;
 }) {
     return (

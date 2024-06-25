@@ -7,7 +7,7 @@ export interface FoodItemType {
 }
 
 export interface CartType {
-    item: FoodItemType;
+    item: FoodType;
     count: number;
 }
 
@@ -53,4 +53,35 @@ export interface AddressType {
     created_at: string;
     updated_at: string;
     owner: number;
+}
+
+export interface FoodType {
+    id: number;
+    name: string;
+    description: string | null;
+    sub_category: number;
+    price: number;
+    image: string;
+    restaurant: number;
+    restaurant_name: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface FoodCategoryType {
+    id: number;
+    name: string;
+}
+
+export interface FoodSubCategoryType {
+    id: number;
+    name: string;
+    category: number;
+}
+
+export interface PaginatedListType<T> {
+    previous: string | null;
+    next: string | null;
+    count: number;
+    results: T[];
 }

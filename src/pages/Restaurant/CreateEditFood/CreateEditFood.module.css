@@ -1,0 +1,7 @@
+.fileInput::-webkit-file-upload-button {
+    padding: 1rem 2rem;
+    background: var(--main-dark-color);
+    border-radius: 30px;
+    margin: 1rem 0;
+    color: white;
+}

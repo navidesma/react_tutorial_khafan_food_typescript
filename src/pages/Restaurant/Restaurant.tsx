@@ -48,7 +48,7 @@ export default function Restaurant() {
                     {address && <AddressComponent address={address} />}
                 </div>
             ) : (
-                <h1>اطلاعات رستوران کامل نشده است، در بخش ویرایش دستوران آنرا کامل کنید. </h1>
+                <h1>اطلاعات رستوران کامل نشده است، در بخش ویرایش رستوران آنرا کامل کنید. </h1>
             )}
         </Main>
     );

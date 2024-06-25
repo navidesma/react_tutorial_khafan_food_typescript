@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { CartType, FoodItemType, NotificationType, UserTypeEnum } from "@/interfaces.ts";
+import { CartType, FoodType, NotificationType, UserTypeEnum } from "@/interfaces.ts";
 
 interface UserInfoType {
     fullName: string;
@@ -8,7 +8,7 @@ interface UserInfoType {
 
 export interface AppContextType {
     cart: CartType[];
-    addItemToCart: (item: FoodItemType) => void;
+    addItemToCart: (item: FoodType) => void;
     removeItemFromCart: (id: number) => void;
     clearCart: () => void;
     notification: NotificationType | null;
@@ -47,7 +47,7 @@ export default function AppContextProvider({ children }: { children: React.React
         }
     }, [notification]);
 
-    const addItemToCart = (item: FoodItemType) => {
+    const addItemToCart = (item: FoodType) => {
         setCart((prevState) => {
             const newState: CartType[] = JSON.parse(JSON.stringify(prevState));
 
