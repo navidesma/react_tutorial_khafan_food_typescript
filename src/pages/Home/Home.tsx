@@ -32,7 +32,7 @@ export default function Home() {
             <Main>
                 {isRestaurantOwner && (
                     <Link to={"/restaurant/food"}>
-                        <Button>تعریف غذای جدید</Button>
+                        <Button color={"green"}>تعریف غذای جدید</Button>
                     </Link>
                 )}
                 <h1>هیچ غذایی تعریف نشده</h1>
@@ -43,9 +43,17 @@ export default function Home() {
     return (
         <Main>
             {isRestaurantOwner && (
-                <Link to={"/restaurant/food"}>
-                    <Button>تعریف غذای جدید</Button>
-                </Link>
+                <>
+                    <Link
+                        to={"/restaurant/food"}
+                        style={{ display: "block", margin: "0.5rem auto" }}
+                    >
+                        <Button color={"green"}>تعریف غذای جدید</Button>
+                    </Link>
+                    <Link to={"/restaurant"} style={{ display: "block", margin: "0.5rem auto" }}>
+                        <Button>ویرایش اطلاعات رستوران</Button>
+                    </Link>
+                </>
             )}
             <div className={styles.foodCardList}>
                 {foods.map((food) => (

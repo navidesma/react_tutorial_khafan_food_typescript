@@ -59,6 +59,7 @@ export interface FoodType {
     id: number;
     name: string;
     description: string | null;
+    category: number;
     sub_category: number;
     price: number;
     image: string;

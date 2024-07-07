@@ -8,7 +8,7 @@ import Input from "@/components/Input/Input.tsx";
 import TextArea from "@/components/Input/TextArea.tsx";
 import Button from "@/components/Button/Button.tsx";
 import useInputValidator from "@/util/useInputValidator.ts";
-import { FoodCategoryType, FoodSubCategoryType } from "@/interfaces.ts";
+import { FoodCategoryType, FoodSubCategoryType, FoodType } from "@/interfaces.ts";
 import Select from "@/components/Select/Select.tsx";
 import SelectOption from "@/components/Select/SelectOption.tsx";
 import useError from "@/util/useError.ts";
@@ -33,6 +33,27 @@ export default function CreateEditFood() {
     const [noFileError, setNoFileError] = useError();
     const [noCategoryError, setNoCategoryError] = useError();
 
+    const [foodState, setFoodState] = React.useState<FoodType>();
+
+    React.useEffect(() => {
+        if (!foodId) return;
+
+        const send = async () => {
+            const res = await sendRequest<FoodType>(`food/${foodId}/`);
+
+            if (res.isOK) {
+                nameInputState.setValue(res.data.name);
+                priceInputState.setValue(res.data.price.toString());
+                descriptionInputState.setValue(res.data.description || "");
+                setSelectedCategory(res.data.category.toString());
+                setSelectedSubCategory(res.data.sub_category.toString());
+                setFoodState(res.data);
+            }
+        };
+
+        send();
+    }, []);
+
     React.useEffect(() => {
         const send = async () => {
             const res = await sendRequest<FoodCategoryType[]>("food/category");
@@ -50,7 +71,6 @@ export default function CreateEditFood() {
             );
 
             if (res.isOK) {
-                setSelectedSubCategory("");
                 setSubCategories(res.data);
             }
         };
@@ -58,7 +78,7 @@ export default function CreateEditFood() {
         if (selectedCategory) send();
     }, [selectedCategory]);
 
-    const imageChangeHander: React.ChangeEventHandler = (event) => {
+    const imageChangeHandler: React.ChangeEventHandler = (event) => {
         if (
             !(event.target as HTMLInputElement).files ||
             (event.target as HTMLInputElement).files!.length === 0
@@ -76,7 +96,7 @@ export default function CreateEditFood() {
             return;
         }
 
-        if (!imageFile) {
+        if (!foodState && !imageFile) {
             setNoFileError(true);
             return;
         }
@@ -86,16 +106,27 @@ export default function CreateEditFood() {
         }
 
         const body = new FormData();
-        body.append("name", nameInputState.value);
-        body.append("image", imageFile);
-        body.append("description", descriptionInputState.value);
-        body.append("price", priceInputState.value);
-        body.append("sub_category", selectedSubCategory);
+        if (!foodState || foodState.name !== nameInputState.value)
+            body.append("name", nameInputState.value);
+
+        if (!foodState || imageFile) body.append("image", imageFile!);
+
+        if (!foodState || foodState.description !== descriptionInputState.value)
+            body.append("description", descriptionInputState.value);
+
+        if (!foodState || foodState.price.toString() !== priceInputState.value)
+            body.append("price", priceInputState.value);
+
+        if (!foodState || foodState.category !== +selectedCategory)
+            body.append("category", selectedCategory);
+
+        if (!foodState || foodState.sub_category !== +selectedSubCategory)
+            body.append("sub_category", selectedSubCategory);
 
         const send = async () => {
-            const res = await sendRequest("food/create/", {
+            const res = await sendRequest(foodState ? `food/update/${foodId}/` : "food/create/", {
                 options: {
-                    method: "POST",
+                    method: foodState ? "PATCH" : "POST",
                     body: body,
                 },
                 isJSON: false,
@@ -122,9 +153,17 @@ export default function CreateEditFood() {
                     className={"numberInput"}
                 />
                 {priceInputState.value && <p>{formatMoney(+priceInputState.value)}</p>}
+                {foodState && (
+                    <img
+                        src={foodState.image}
+                        alt=''
+                        style={{ objectFit: "contain", maxWidth: "300px", borderRadius: "30px" }}
+                    />
+                )}
+                {foodState && <p>برای جایگزینی عکس، فایل جدید انتخاب کنید</p>}
                 <input
                     type='file'
-                    onChange={imageChangeHander}
+                    onChange={imageChangeHandler}
                     className={styles.fileInput}
                     accept='image/*'
                 />
@@ -133,6 +172,7 @@ export default function CreateEditFood() {
                     label={"دسته بندی اصلی"}
                     selectValue={selectedCategory}
                     setValue={setSelectedCategory}
+                    style={{ marginBottom: "1rem" }}
                 >
                     <SelectOption value={""}>-----</SelectOption>
                     {categories &&
@@ -146,6 +186,7 @@ export default function CreateEditFood() {
                     label={"دسته بندی فرعی"}
                     selectValue={selectedSubCategory}
                     setValue={setSelectedSubCategory}
+                    style={{ marginBottom: "1rem" }}
                 >
                     <SelectOption value={""}>-----</SelectOption>
                     {subCategories &&
