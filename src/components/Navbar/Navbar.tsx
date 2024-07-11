@@ -36,6 +36,11 @@ export default function Navbar() {
                             )}
                         </Button>
                     </Link>
+                    <Link to='/orders' style={{ margin: "0.5rem" }}>
+                        <Button size={"small"} variant={"outlined"}>
+                            {"سفارش ها"}
+                        </Button>
+                    </Link>
                     <Button
                         color={"inherit"}
                         size={"small"}

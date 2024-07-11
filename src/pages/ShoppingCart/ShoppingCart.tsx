@@ -20,7 +20,7 @@ interface SubmitType {
 }
 
 export default function ShoppingCart() {
-    const { cart } = useContext(AppContext) as AppContextType;
+    const { cart, toggleNotification, clearCart } = useContext(AppContext) as AppContextType;
 
     const sendRequest = useSendRequest();
     const navigate = useNavigate();
@@ -68,6 +68,8 @@ export default function ShoppingCart() {
             });
 
             if (res.isOK) {
+                toggleNotification({ message: "سفارش با موفقیت ثبت شد", type: "success" });
+                clearCart();
                 navigate("/home");
             }
         };

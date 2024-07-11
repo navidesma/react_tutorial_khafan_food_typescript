@@ -12,6 +12,7 @@ import EditRestaurant from "@/pages/Restaurant/EditRestaurant/EditRestaurant.tsx
 import Addresses from "@/pages/Addresses/Addresses.tsx";
 import ManageAddress from "@/pages/ManageAddress/ManageAddress.tsx";
 import CreateEditFood from "@/pages/Restaurant/CreateEditFood/CreateEditFood.tsx";
+import Orders from "@/pages/Orders/Orders.tsx";
 
 function App() {
     const { notification, isSignedIn } = React.useContext(AppContext) as AppContextType;
@@ -31,6 +32,7 @@ function App() {
                         <Route path='addresses' element={<Addresses />} />
                         <Route path='manage-address/:addressId' element={<ManageAddress />} />
                         <Route path='manage-address' element={<ManageAddress />} />
+                        <Route path='orders' element={<Orders />} />
                         <Route path='' element={<Home />} />{" "}
                         <Route path='*' element={<Navigate to={"home"} />} />
                     </>

@@ -88,3 +88,22 @@ export interface PaginatedListType<T> {
     count: number;
     results: T[];
 }
+
+export interface OrderItemType {
+    id: number;
+    food: FoodType;
+    count: number;
+    created_at: string;
+}
+
+export interface OrderType {
+    id: number;
+    items: OrderItemType[];
+    shipping_cost: number;
+    total_cost: number;
+    customer: number;
+    address: AddressType;
+    deliver_time: string | null;
+    is_finished: boolean;
+    created_at: string;
+}
