@@ -7,6 +7,8 @@ import { FoodType, PaginatedListType, UserTypeEnum } from "@/interfaces.ts";
 import { AppContext, AppContextType } from "@/appContext.tsx";
 import { Link } from "react-router-dom";
 import Button from "@/components/Button/Button.tsx";
+import Pagination from "@/components/Pagination/Pagination";
+import usePagination from "@/util/usePagination";
 
 export default function Home() {
     const { userInfo } = useContext(AppContext) as AppContextType;
@@ -14,15 +16,20 @@ export default function Home() {
     const sendRequest = useSendRequest();
     const [foods, setFood] = React.useState<FoodType[]>();
 
+    const { count, currentPage, setCount, setCurrentPage } = usePagination();
+
     React.useEffect(() => {
         const send = async () => {
-            const res = await sendRequest<PaginatedListType<FoodType>>("food/list/");
+            const res = await sendRequest<PaginatedListType<FoodType>>(
+                `food/list/?page=${currentPage}`,
+            );
             if (res.isOK) {
+                setCount(res.data.count);
                 setFood(res.data.results);
             }
         };
         send();
-    }, []);
+    }, [currentPage]);
 
     if (!foods) {
         return <></>;
@@ -62,6 +69,7 @@ export default function Home() {
                     </div>
                 ))}
             </div>
+            <Pagination {...{ count, currentPage, setCurrentPage }} />
         </Main>
     );
 }

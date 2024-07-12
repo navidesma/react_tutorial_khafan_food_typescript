@@ -1,0 +1,29 @@
+.container {
+    padding: 1rem;
+    margin: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    display: flex;
+}
+
+.pageItem {
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 0 0.2rem;
+}
+
+.pageItem:hover {
+    background-color: var(--main-light-color);
+    cursor: pointer;
+}
+
+.pageAction {
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 0 0.2rem;
+}
+
+.pageAction:hover {
+    background-color: var(--main-light-color);
+}
