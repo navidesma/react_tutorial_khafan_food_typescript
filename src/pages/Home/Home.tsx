@@ -62,6 +62,9 @@ export default function Home() {
                     </Link>
                 </>
             )}
+            <Link to={"/addresses"} style={{ display: "block", margin: "0.5rem auto" }}>
+                <Button>مدیریت آدرس ها</Button>
+            </Link>
             <div className={styles.foodCardList}>
                 {foods.map((food) => (
                     <div className={styles.foodCardItem}>
