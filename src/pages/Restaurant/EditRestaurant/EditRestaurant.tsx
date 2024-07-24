@@ -97,7 +97,11 @@ export default function EditRestaurant() {
         <Main>
             <form className={styles.container} onSubmit={formSubmitHandler}>
                 <Input label={"نام رستوران"} {...nameInputState.props} />
-                <Select label={"آدرس"} selectValue={selectedAddress} setValue={setSelectedAddress}>
+                <Select
+                    label={"آدرس"}
+                    selectedValue={selectedAddress}
+                    setValue={setSelectedAddress}
+                >
                     <SelectOption value={""}>------</SelectOption>
                     {addresses.map((address) => (
                         <SelectOption value={address.id} key={address.id}>

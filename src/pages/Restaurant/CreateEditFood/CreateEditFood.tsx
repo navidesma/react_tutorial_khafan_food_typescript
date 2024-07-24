@@ -170,7 +170,7 @@ export default function CreateEditFood() {
                 {noFileError && <p style={{ color: "red" }}>فایل عکس انتخاب شود</p>}
                 <Select
                     label={"دسته بندی اصلی"}
-                    selectValue={selectedCategory}
+                    selectedValue={selectedCategory}
                     setValue={setSelectedCategory}
                     style={{ marginBottom: "1rem" }}
                 >
@@ -184,7 +184,7 @@ export default function CreateEditFood() {
                 </Select>
                 <Select
                     label={"دسته بندی فرعی"}
-                    selectValue={selectedSubCategory}
+                    selectedValue={selectedSubCategory}
                     setValue={setSelectedSubCategory}
                     style={{ marginBottom: "1rem" }}
                 >

@@ -130,7 +130,7 @@ export default function ShoppingCart() {
                     )}
                     <Select
                         label={"آدرس"}
-                        selectValue={selectedAddress}
+                        selectedValue={selectedAddress}
                         setValue={setSelectedAddress}
                         style={{ marginTop: "1rem" }}
                     >

@@ -99,7 +99,7 @@ export default function SignUp() {
                 style={{ paddingLeft: "1rem" }}
             />
             <Select
-                {...{ setValue: setUserType, selectValue: userType, label: "نوع کاربر" }}
+                {...{ setValue: setUserType, selectedValue: userType, label: "نوع کاربر" }}
                 style={{ marginBottom: "2rem" }}
             >
                 {Object.values(UserTypeEnum).map((userType) => (
