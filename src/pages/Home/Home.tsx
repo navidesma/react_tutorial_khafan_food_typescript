@@ -31,22 +31,6 @@ export default function Home() {
         send();
     }, [currentPage]);
 
-    if (!foods) {
-        return <></>;
-    }
-    if (foods.length === 0) {
-        return (
-            <Main>
-                {isRestaurantOwner && (
-                    <Link to={"/restaurant/food"}>
-                        <Button color={"green"}>تعریف غذای جدید</Button>
-                    </Link>
-                )}
-                <h1>هیچ غذایی تعریف نشده</h1>
-            </Main>
-        );
-    }
-
     return (
         <Main>
             {isRestaurantOwner && (
@@ -58,21 +42,27 @@ export default function Home() {
                         <Button color={"green"}>تعریف غذای جدید</Button>
                     </Link>
                     <Link to={"/restaurant"} style={{ display: "block", margin: "0.5rem auto" }}>
-                        <Button>ویرایش اطلاعات رستوران</Button>
+                        <Button>مدیریت رستوران</Button>
                     </Link>
                 </>
             )}
             <Link to={"/addresses"} style={{ display: "block", margin: "0.5rem auto" }}>
                 <Button>مدیریت آدرس ها</Button>
             </Link>
-            <div className={styles.foodCardList}>
-                {foods.map((food) => (
-                    <div className={styles.foodCardItem}>
-                        <FoodCard {...food} />
+            {foods && foods.length > 0 ? (
+                <>
+                    <div className={styles.foodCardList}>
+                        {foods.map((food) => (
+                            <div className={styles.foodCardItem}>
+                                <FoodCard {...food} />
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            <Pagination {...{ count, currentPage, setCurrentPage }} />
+                    <Pagination {...{ count, currentPage, setCurrentPage }} />
+                </>
+            ) : (
+                <h1>هیچ غذایی تعریف نشده</h1>
+            )}
         </Main>
     );
 }

@@ -14,6 +14,7 @@ export default function Pagination({
 }) {
     const totalPages = Math.ceil(count / PAGE_SIZE);
     const pages = Array.from({ length: totalPages }, (x, i) => i + 1);
+    const pageOverflow = totalPages >= 7;
     return (
         <div className={styles.container}>
             <div
@@ -26,18 +27,38 @@ export default function Pagination({
             >
                 &lt;
             </div>
-            {pages.map((page) => (
-                <div
-                    onClick={() => setCurrentPage(page)}
-                    className={styles.pageItem}
-                    style={{
-                        backgroundColor:
-                            page === currentPage ? "var(--main-primary-color)" : undefined,
-                    }}
-                >
-                    {page}
-                </div>
-            ))}
+            {pageOverflow && currentPage !== 1 && (
+                <>
+                    <div className={styles.pageItem} onClick={() => setCurrentPage(1)}>
+                        1
+                    </div>
+                    <div className={styles.pageItem}>...</div>
+                </>
+            )}
+            {pages.map((page) =>
+                !pageOverflow || page === currentPage ? (
+                    <div
+                        onClick={() => setCurrentPage(page)}
+                        className={styles.pageItem}
+                        style={{
+                            backgroundColor:
+                                page === currentPage ? "var(--main-primary-color)" : undefined,
+                        }}
+                    >
+                        {page}
+                    </div>
+                ) : (
+                    <></>
+                ),
+            )}
+            {pageOverflow && currentPage !== totalPages && (
+                <>
+                    <div className={styles.pageItem}>...</div>
+                    <div className={styles.pageItem} onClick={() => setCurrentPage(totalPages)}>
+                        {totalPages}
+                    </div>
+                </>
+            )}
             <div
                 className={styles.pageAction}
                 onClick={

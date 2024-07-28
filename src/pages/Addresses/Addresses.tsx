@@ -9,13 +9,13 @@ import Button from "@/components/Button/Button.tsx";
 
 export default function Addresses() {
     const sendRequest = useSendRequest();
-    const [addresses, setAddreses] = React.useState<AddressType[]>();
+    const [addresses, setAddresses] = React.useState<AddressType[]>();
 
     React.useEffect(() => {
         const send = async () => {
             const res = await sendRequest<AddressType[]>("food/address/");
             if (res.isOK) {
-                setAddreses(res.data);
+                setAddresses(res.data);
             }
         };
         send();

@@ -92,7 +92,13 @@ export default function CreateEditFood() {
     const formSubmitHandler: React.FormEventHandler = (event) => {
         event.preventDefault();
 
-        if (!(nameInputState.getIsValid() && descriptionInputState.getIsValid())) {
+        if (
+            !(
+                nameInputState.getIsValid() &&
+                descriptionInputState.getIsValid() &&
+                priceInputState.getIsValid()
+            )
+        ) {
             return;
         }
 
